@@ -1,5 +1,11 @@
 name: Kick off CDRO Pipeline
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,6 +42,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USER }}/insurance-action:${{ github.sha }}
 
       - name: Kick off CD/RO application deploy
+        if: github.event_name == 'pull_request'
         env:
           CDRO_URL: ${{ secrets.CDRO_SERVER }}
           CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
@@ -47,3 +54,26 @@ jobs:
           environmentName: Insurance QA
           actualParameter: |
             {imageTag: ${{ github.sha }} }
+
+      - name: Create release from template
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          CDRO_URL: ${{ secrets.CDRO_SERVER }}
+          CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
+        uses: cloudbees/cdro-actions/create-release-from-template@main
+        with:
+          templateProjectName: Demo Onboarding
+          templateCatalogName: Sandbox
+          templateName: 2. Create Insurance Release
+          actualParameter: |
+              {releaseName: "Insurance Release ${{ github.sha }}"}
+
+      - name: Run release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          CDRO_URL: ${{ secrets.CDRO_SERVER }}
+          CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
+        uses: cloudbees/cdro-actions/start-release@main
+        with:
+          projectName: ldonley Demo
+          releaseName: Insurance Release ${{ github.sha }}
