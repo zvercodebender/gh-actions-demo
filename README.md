@@ -1,6 +1,6 @@
 # insurance-frontend
 
-[![CI/CD Pipeline](https://github.com/ldonley-workshop/insurance-action/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/ldonley-workshop/insurance-action/actions/workflows/main.yml)
+[![GHA workflow](https://github.com/cloudbees-demos/gh-actions-demo/actions/workflows/cdro.yml/badge.svg)](https://github.com/cloudbees-demos/gh-actions-demo/actions/workflows/cdro.yml)
 
 Detailed README coming soon.
 

@@ -37,7 +37,7 @@ jobs:
 
       - name: Kick off CD/RO application deploy
         env:
-          CDRO_SERVER: ${{ secrets.CDRO_SERVER }}
+          CDRO_URL: ${{ secrets.CDRO_SERVER }}
           CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
         uses: cloudbees/cdro-actions/run-process@main
         with:
