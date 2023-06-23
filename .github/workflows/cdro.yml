@@ -62,11 +62,11 @@ jobs:
           CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
         uses: cloudbees/cdro-actions/create-release-from-template@main
         with:
-          templateProjectName: Demo Onboarding
-          templateCatalogName: Sand Box
-          templateName: 2. Create Insurance Release
+          templateProjectName: ldonley Demo
+          templateCatalogName: LD Demo
+          templateName: Simple Release
           actualParameter: |
-              {releaseName: "Insurance Release ${{ github.sha }}"}
+              {releaseName: "Insurance Release ${{ github.sha }}", imageTag: "${{ github.sha }}"}
 
       - name: Run release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
