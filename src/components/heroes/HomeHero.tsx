@@ -19,7 +19,7 @@ const HomeHero = () => {
           <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
             <h1 className="text-center text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
               <span className="block text-white">This is about</span>
-              <span className="block text-blue-200 font-semibold">to be updated</span>
+              <span className="block text-blue-200 font-semibold">to be updated!</span>
             </h1>
             <p className="mt-6 max-w-lg mx-auto text-center text-xl text-blue-200 sm:max-w-3xl">
               When an issue arises, the last thing you want to think about are
