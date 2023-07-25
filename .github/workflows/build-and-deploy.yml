@@ -48,10 +48,10 @@ jobs:
           CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
         uses: cloudbees/cdro-actions/run-process@main
         with:
-          projectName: ldonley Demo
+          projectName: GHA
           applicationName: Simple Insurance
           processName: Deploy Application 
-          environmentName: Insurance QA
+          environmentName: Insurance Dev
           actualParameter: |
             {imageTag: ${{ github.sha }} }
 
@@ -62,11 +62,11 @@ jobs:
           CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
         uses: cloudbees/cdro-actions/create-release-from-template@main
         with:
-          templateProjectName: ldonley Demo
-          templateCatalogName: LD Demo
+          templateProjectName: GHA
+          templateCatalogName: GHA
           templateName: Simple Release
           actualParameter: |
-              {releaseName: "Insurance Release ${{ github.sha }}", imageTag: "${{ github.sha }}"}
+              {releaseName: "Simple Release ${{ github.sha }}", imageTag: "${{ github.sha }}"}
 
       - name: Run release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -75,5 +75,5 @@ jobs:
           CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
         uses: cloudbees/cdro-actions/start-release@main
         with:
-          projectName: ldonley Demo
-          releaseName: Insurance Release ${{ github.sha }}
+          projectName: GHA
+          releaseName: Simple Release ${{ github.sha }}
