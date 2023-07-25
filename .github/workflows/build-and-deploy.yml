@@ -51,7 +51,7 @@ jobs:
           projectName: GHA
           applicationName: Simple Insurance
           processName: Deploy Application 
-          environmentName: Insurance Dev
+          environmentName: insurance-dev
           actualParameter: |
             {imageTag: ${{ github.sha }} }
 
