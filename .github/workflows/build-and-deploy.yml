@@ -1,4 +1,4 @@
-name: Kick off CDRO Pipeline
+name: Build and deploy
 on: 
   push:
     branches:
