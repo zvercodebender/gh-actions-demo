@@ -53,7 +53,7 @@ jobs:
           processName: Deploy Application 
           environmentName: insurance-dev
           actualParameter: |
-            {imageTag: ${{ github.sha }} }
+            imageTag: ${{ github.sha }}
 
       - name: Create release from template
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -66,7 +66,8 @@ jobs:
           templateCatalogName: GHA
           templateName: Simple Release
           actualParameter: |
-              {releaseName: "Simple Release ${{ github.sha }}", imageTag: "${{ github.sha }}"}
+              releaseName: "Simple Release ${{ github.sha }}"
+              imageTag: "${{ github.sha }}"
 
       - name: Run release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
