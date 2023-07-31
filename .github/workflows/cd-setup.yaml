@@ -1,27 +1,27 @@
 name: Setup CD config
 on:
-	workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-	setup:
-		runs-on: ubuntu-latest
-		env:
-			CDRO_URL: ${{ secrets.CDRO_SERVER }}
-			CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
-		steps:
-				- uses: actions/checkout@v2
-				
-				- name: Setup project
-					uses: cloudbees/cdro-actions/eval-dsl@main
-					with:
-						dsl-file: ./platform_content/project.groovy
+  setup:
+    runs-on: ubuntu-latest
+    env:
+      CDRO_URL: ${{ secrets.CDRO_SERVER }}
+      CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
+    steps:
+        - uses: actions/checkout@v2
+        
+        - name: Setup project
+          uses: cloudbees/cdro-actions/eval-dsl@main
+          with:
+            dsl-file: ./platform_content/project.groovy
 
-				- name: Setup applications + environments
-					uses: cloudbees/cdro-actions/eval-dsl@main
-					with:
-						dsl-file: ./platform_content/application.groovy
+        - name: Setup applications + environments
+          uses: cloudbees/cdro-actions/eval-dsl@main
+          with:
+            dsl-file: ./platform_content/application.groovy
 
-				- name: Setup project
-					uses: cloudbees/cdro-actions/eval-dsl@main
-					with:
-						dsl-file: ./platform_content/catalog.groovy
+        - name: Setup project
+          uses: cloudbees/cdro-actions/eval-dsl@main
+          with:
+            dsl-file: ./platform_content/catalog.groovy
