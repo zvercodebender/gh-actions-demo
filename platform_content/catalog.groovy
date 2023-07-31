@@ -47,7 +47,7 @@ project 'GHA', {
             subproject = ProjectName
             taskType = \'APPROVAL\'
             approver = [
-              \'sa-users\',
+              \'admin\',
             ]
           }
         }
