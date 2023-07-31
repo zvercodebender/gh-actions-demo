@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "platform_content/**"
   pull_request:
     branches:
       - main
