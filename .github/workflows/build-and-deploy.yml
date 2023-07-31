@@ -71,6 +71,8 @@ jobs:
           actualParameter: |
               releaseName: "Simple Release ${{ github.sha }}"
               imageTag: "${{ github.sha }}"
+              imageRepository: ${{ secrets.DOCKERHUB_USER }}/insurance-action
+              hostName: "example.com"
 
       - name: Run release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'

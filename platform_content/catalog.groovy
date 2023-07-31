@@ -22,6 +22,8 @@ project 'GHA', {
   def EndDateStr = (String) (StartDate + 14).format("yyyy-MM-dd")
   def ReleaseName = args.releaseName
   def ImageTag = args.imageTag
+  def ImageRepo = args.imageRepository
+  def HostName = args.hostName
 
 
   release ReleaseName, {
@@ -85,6 +87,8 @@ project 'GHA', {
       deployerConfiguration \'Deploy to dev\', {
         actualParameter = [
           \'imageTag\': ImageTag,
+          \'imageRepository\': ImageRepo,
+          \'hostName\': HostName,
         ]
         deployerTaskName = \'Deploy to dev\'
         environmentName = \'insurance-dev\'
@@ -96,6 +100,8 @@ project 'GHA', {
       deployerConfiguration \'ee116750-9947-f10a-9dc5-da7e38253710\', {
         actualParameter = [
           \'imageTag\': ImageTag,
+          \'imageRepository\': ImageRepo,
+          \'hostName\': HostName,
         ]
         deployerTaskName = \' Deploy to production\'
         environmentName = \'insurance-prod\'
@@ -128,6 +134,20 @@ project 'GHA', {
       formalParameter 'imageTag', defaultValue: 'latest', {
         label = 'Image Tag'
         orderIndex = '2'
+        required = '1'
+        type = 'entry'
+      }
+
+      formalParameter 'imageRepository', defaultValue: 'ldonleycb/insurance-action', {
+        label = 'Image Repository'
+        orderIndex = '3'
+        required = '1'
+        type = 'entry'
+      }
+
+      formalParameter 'hostName', defaultValue: 'example.com', {
+        label = 'Host name'
+        orderIndex = '4'
         required = '1'
         type = 'entry'
       }
