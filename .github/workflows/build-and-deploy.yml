@@ -10,7 +10,7 @@ on:
       - main
   workflow_dispatch:
 env:
-  GO_VERSION: 1.20
+  GO_VERSION: "1.20.6"
   APP_NAME: demo-app
 jobs:
   build:
