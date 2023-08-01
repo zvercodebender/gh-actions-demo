@@ -61,7 +61,7 @@ project 'GHA', {
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
   hosts:
-    - host: simple-insurance.$[/myEnvironment/domain_identifier].$[hostName]
+    - host: 'simple-insurance.$[/myEnvironment/domain_identifier].$[hostName]'
       paths:
         - path: /
           pathType: ImplementationSpecific
