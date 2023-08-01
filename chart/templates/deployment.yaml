@@ -44,10 +44,8 @@ spec:
               path: /
               port: http
           env:
-            - name: FM_KEY
-              value: {{ .Values.fmToken }}
-            - name: BACKEND_URL
-              value: {{ .Values.backendUrl }}
+            - name: ENVIRONMENT
+              value: {{ .Values.environment }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

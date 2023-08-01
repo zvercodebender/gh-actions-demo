@@ -1,13 +1,13 @@
-# insurance-frontend
+# CD/RO Demo App
 
-[![GHA workflow](https://github.com/cloudbees-demos/gh-actions-demo/actions/workflows/cdro.yml/badge.svg)](https://github.com/cloudbees-demos/gh-actions-demo/actions/workflows/cdro.yml)
+This is a simple demo app that can be used to identify the different build versions of the application as well as the environment they are running in.
 
-Detailed README coming soon.
+![screenshot](./img/screenshot.png)
+
+## How to build
+
+A Dockerfile is included so you can build container images. Alternatively, you can use Go to build it using `go build`.
 
 ## How to run
 
-```shell
-npm install
-npm run dev
-```
-Access at http://localhost:3000
+Whether you run the binary directly, or through a container image, you can set the `ENVIRONMENT` environment variable to alter the name that appears in the application. The GitHub SHA is taken from the latest git commit as of building. 

@@ -1,5 +1,5 @@
 name: Build and deploy
-on: 
+on:
   push:
     branches:
       - main
@@ -9,6 +9,9 @@ on:
     branches:
       - main
   workflow_dispatch:
+env:
+  GO_VERSION: 1.20
+  APP_NAME: demo-app
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,19 +20,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Go
+        uses: actions/setup-go@v3
         with:
-          node-version: '18'
+          go-version: ${{ env.GO_VERSION }}
 
       - name: Install dependencies
-        run: npm install
+        run: go mod download
 
       - name: Run tests
-        run: npm test
+        run: go test -v ./...
 
       - name: Run build
-        run: npm run build
+        run: go build -v
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -42,7 +45,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USER }}/insurance-action:${{ github.sha }}
+          tags: ${{ secrets.DOCKERHUB_USER }}/${{ env.APP_NAME }}:${{ github.sha }}
 
       - name: Kick off CD/RO application deploy
         if: github.event_name == 'pull_request'
@@ -53,7 +56,7 @@ jobs:
         with:
           projectName: GHA
           applicationName: Simple Insurance
-          processName: Deploy Application 
+          processName: Deploy Application
           environmentName: insurance-dev
           actualParameter: |
             imageTag: ${{ github.sha }}
@@ -69,10 +72,10 @@ jobs:
           templateCatalogName: GHA
           templateName: Simple Release
           actualParameter: |
-              releaseName: "Simple Release ${{ github.sha }}"
-              imageTag: "${{ github.sha }}"
-              imageRepository: ${{ secrets.DOCKERHUB_USER }}/insurance-action
-              hostName: "example.com"
+            releaseName: "Simple Release ${{ github.sha }}"
+            imageTag: "${{ github.sha }}"
+            imageRepository: ${{ secrets.DOCKERHUB_USER }}/${{ env.APP_NAME }}
+            hostName: "example.com"
 
       - name: Run release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'

@@ -1,9 +1,4 @@
-node_modules
+sha.txt
 .DS_Store
-dist
-dist-ssr
-*.local
-**/charts/*.tgz
-values.local.yaml
-coverage/
-reports/
+# App binary
+demo-app
