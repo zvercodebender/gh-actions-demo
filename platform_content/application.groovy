@@ -65,10 +65,6 @@ project 'GHA', {
       paths:
         - path: /
           pathType: ImplementationSpecific
-  tls:
-    - secretName: insurance-simple-tls
-      hosts:
-        - simple-insurance.$[/myEnvironment/domain_identifier].$[hostName]
 
 image:
   repository: $[imageRepository]
