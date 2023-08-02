@@ -67,6 +67,8 @@ image:
   pullPolicy: IfNotPresent
   tag: $[imageTag]
 
+environment: $[/myEnvironment/domain_identifier]
+
 serviceAccount:
   create: false''',
         'version': '',
@@ -94,6 +96,21 @@ serviceAccount:
           processStepType = 'plugin'
           subprocedure = 'Deploy Service'
           subproject = '/plugins/EC-Helm/project'
+        }
+
+        processStep 'Update properties', {
+          description = 'Set the summary values'
+          processStepType = 'command'
+          actualParameter = [
+          'commandToRun': '''ectool setProperty "/myJob/report-urls/Demo App" "http://demo.$[/myEnvironment/domain_identifier].$[/server/app_base_hostname]"
+
+    $[/javascript
+                                        // Only run in Pipeline context
+                                        getProperty("/myStageRuntime")?"":"#"
+                                    ] ectool setProperty "/myStageRuntime/ec_summary/Demo App" "<html><a target="_blank" href=\'http://demo.$[/myEnvironment/domain_identifier].$[/server/app_base_hostname]\'>View deployed app</a></html>"''',
+          ]
+          subprocedure = 'RunCommand'
+          subproject = '/plugins/EC-Core/project'
         }
 
         processDependency 'Retrieve Artifact', targetProcessStepName: 'Deploy Microservice'
