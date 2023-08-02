@@ -5,6 +5,7 @@ on:
       - main
     paths-ignore:
       - "platform_content/**"
+      - ".github/workflows/cd-setup.yaml"
   pull_request:
     branches:
       - main
