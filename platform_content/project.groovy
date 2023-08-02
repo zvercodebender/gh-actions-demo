@@ -10,7 +10,7 @@ project 'GHA', {
     pluginKey = 'EC-Git'
 
     addCredential 'token_credential', {
-      passwordRecoveryAllowed = '1'
+      passwordRecoveryAllowed = '0'
       password = args.githubPAT
     }
   }
