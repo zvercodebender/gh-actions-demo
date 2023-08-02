@@ -76,7 +76,6 @@ jobs:
             releaseName: "Simple Release ${{ github.sha }}"
             imageTag: "${{ github.sha }}"
             imageRepository: ${{ secrets.DOCKERHUB_USER }}/${{ env.APP_NAME }}
-            hostName: "example.com"
 
       - name: Run release
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'

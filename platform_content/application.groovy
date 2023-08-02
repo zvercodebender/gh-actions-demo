@@ -60,7 +60,7 @@ project 'GHA', {
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
-  hostname: demo.$[/myEnvironment/domain_identifier].$[hostName]
+  hostname: demo.$[/myEnvironment/domain_identifier].$[/server/app_base_hostname]
 
 image:
   repository: $[imageRepository]
@@ -114,13 +114,6 @@ serviceAccount:
 
       formalParameter 'imageRepository', defaultValue: 'ldonleycb/demo-app', {
         label = 'Image Repository'
-        orderIndex = '1'
-        required = '1'
-        type = 'entry'
-      }
-
-      formalParameter 'hostName', defaultValue: 'example.com', {
-        label = 'Host name'
         orderIndex = '1'
         required = '1'
         type = 'entry'

@@ -23,7 +23,6 @@ project 'GHA', {
   def ReleaseName = args.releaseName
   def ImageTag = args.imageTag
   def ImageRepo = args.imageRepository
-  def HostName = args.hostName
 
 
   release ReleaseName, {
@@ -88,7 +87,6 @@ project 'GHA', {
         actualParameter = [
           \'imageTag\': ImageTag,
           \'imageRepository\': ImageRepo,
-          \'hostName\': HostName,
         ]
         deployerTaskName = \'Deploy to dev\'
         environmentName = \'demo-dev\'
@@ -101,7 +99,6 @@ project 'GHA', {
         actualParameter = [
           \'imageTag\': ImageTag,
           \'imageRepository\': ImageRepo,
-          \'hostName\': HostName,
         ]
         deployerTaskName = \' Deploy to production\'
         environmentName = \'demo-prod\'
@@ -145,12 +142,6 @@ project 'GHA', {
         type = 'entry'
       }
 
-      formalParameter 'hostName', defaultValue: 'example.com', {
-        label = 'Host name'
-        orderIndex = '4'
-        required = '1'
-        type = 'entry'
-      }
     }
   }
 }
