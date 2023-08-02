@@ -135,7 +135,7 @@ project 'GHA', {
         type = 'entry'
       }
 
-      formalParameter 'imageRepository', defaultValue: 'ldonleycb/demo-app', {
+      formalParameter 'imageRepository', defaultValue: args.dockerHubUser + '/demo-app', {
         label = 'Image Repository'
         orderIndex = '3'
         required = '1'
