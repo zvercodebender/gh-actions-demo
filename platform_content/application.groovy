@@ -1,13 +1,13 @@
 project 'GHA', {
-  environment 'insurance-dev', {
+  environment 'demo-dev', {
     projectName = 'GHA'
 
-    cluster 'insurance-dev', {
+    cluster 'demo-dev', {
       definitionParameter = [
         'config': '/projects/GHA/pluginConfigurations/helm',
-        'namespace': 'insurance-dev',
+        'namespace': 'demo-dev',
       ]
-      environmentName = 'insurance-dev'
+      environmentName = 'demo-dev'
       pluginKey = 'EC-Helm'
     }
 
@@ -16,18 +16,18 @@ project 'GHA', {
     }
 
     // Custom properties
-    domain_identifier = 'simple-dev'
+    domain_identifier = 'dev'
   }
 
-  environment 'insurance-prod', {
+  environment 'demo-prod', {
     projectName = 'GHA'
 
-    cluster 'insurance-prod', {
+    cluster 'demo-prod', {
       definitionParameter = [
         'config': '/projects/GHA/pluginConfigurations/helm',
-        'namespace': 'insurance-prod',
+        'namespace': 'demo-prod',
       ]
-      environmentName = 'insurance-prod'
+      environmentName = 'demo-prod'
       pluginKey = 'EC-Helm'
     }
 
@@ -36,32 +36,32 @@ project 'GHA', {
     }
 
     // Custom properties
-    domain_identifier = 'simple-prod'
+    domain_identifier = 'prod'
   }
 
-  application 'Simple Insurance', {
+  application 'Demo App', {
     applicationType = 'microservice'
 
-    microservice 'Insurance Frontend', {
-      applicationName = 'Simple Insurance'
+    microservice 'Demo App', {
+      applicationName = 'Demo App'
       definitionSource = 'git'
       definitionSourceParameter = [
         'branch': 'main',
         'config': '/projects/GHA/pluginConfigurations/github',
-        'repoUrl': 'https://github.com/cloudbees-demos/gh-actions-demo',
+        'repoUrl': args.repoUrl,
       ]
       definitionType = 'helm'
       deployParameter = [
         'additionalOptions': '--create-namespace',
         'chart': './chart',
-        'releaseName': 'simple-insurance',
+        'releaseName': 'demo-app',
         'values': '''ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
   hosts:
-    - host: 'simple-insurance.$[/myEnvironment/domain_identifier].$[hostName]'
+    - host: 'demo.$[/myEnvironment/domain_identifier].$[hostName]'
       paths:
         - path: /
           pathType: ImplementationSpecific
@@ -71,7 +71,6 @@ image:
   pullPolicy: IfNotPresent
   tag: $[imageTag]
 
-backendUrl: https://insurance-backend.$[/myEnvironment/domain_identifier].example.com
 serviceAccount:
   create: false''',
         'version': '',
@@ -84,7 +83,7 @@ serviceAccount:
 
       process 'Deploy Microservice Process', {
         description = 'System generated process for microservice deployment'
-        microserviceName = 'Insurance Frontend'
+        microserviceName = 'Demo App'
         processType = 'DEPLOY'
 
         processStep 'Retrieve Artifact', {
@@ -107,7 +106,7 @@ serviceAccount:
 
     process 'Deploy Application', {
       description = 'System generated process for microservice application'
-      applicationName = 'Simple Insurance'
+      applicationName = 'Demo App'
       processType = 'DEPLOY'
 
       formalParameter 'imageTag', defaultValue: 'latest', {
@@ -117,7 +116,7 @@ serviceAccount:
         type = 'entry'
       }
 
-      formalParameter 'imageRepository', defaultValue: 'ldonleycb/insurance-action', {
+      formalParameter 'imageRepository', defaultValue: 'ldonleycb/demo-action', {
         label = 'Image Repository'
         orderIndex = '1'
         required = '1'
@@ -131,7 +130,7 @@ serviceAccount:
         type = 'entry'
       }
 
-      formalParameter 'ec_Insurance Frontend-run', defaultValue: '1', {
+      formalParameter 'ec_Demo App-run', defaultValue: '1', {
         expansionDeferred = '1'
         type = 'checkbox'
       }
@@ -146,10 +145,10 @@ serviceAccount:
         type = 'checkbox'
       }
 
-      processStep 'Insurance Frontend', {
+      processStep 'Demo App', {
         description = 'System generated step to invoke microservice process'
         processStepType = 'process'
-        submicroservice = 'Insurance Frontend'
+        submicroservice = 'Demo App'
         submicroserviceProcess = 'Deploy Microservice Process'
         useUtilityResource = '1'
 
@@ -172,29 +171,29 @@ serviceAccount:
     }
 
     tierMap 'ee27fbc4-d015-f1f5-8bec-daf345ab12c5', {
-      applicationName = 'Simple Insurance'
-      environmentName = 'insurance-dev'
+      applicationName = 'Demo App'
+      environmentName = 'demo-dev'
       environmentProjectName = 'GHA'
       projectName = 'GHA'
 
       microserviceMapping 'ee27fc10-1ecd-f147-89d9-daf345ab12c5', {
-        clusterName = 'insurance-dev'
+        clusterName = 'demo-dev'
         clusterProjectName = 'GHA'
-        microserviceName = 'Insurance Frontend'
+        microserviceName = 'Demo App'
         tierMapName = 'ee27fbc4-d015-f1f5-8bec-daf345ab12c5'
       }
     }
 
     tierMap 'ee27fbd1-4468-f1e1-bb21-daf345ab12c5', {
-      applicationName = 'Simple Insurance'
-      environmentName = 'insurance-prod'
+      applicationName = 'Demo App'
+      environmentName = 'demo-prod'
       environmentProjectName = 'GHA'
       projectName = 'GHA'
 
       microserviceMapping 'ee27fc10-2276-f1c9-89d9-daf345ab12c5', {
-        clusterName = 'insurance-prod'
+        clusterName = 'demo-prod'
         clusterProjectName = 'GHA'
-        microserviceName = 'Insurance Frontend'
+        microserviceName = 'Demo App'
         tierMapName = 'ee27fbd1-4468-f1e1-bb21-daf345ab12c5'
       }
     }
