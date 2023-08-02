@@ -80,7 +80,7 @@ project 'GHA', {
       }
     }
 
-    deployerApplication \'Simple Insurance\', {
+    deployerApplication \'Demo App\', {
       orderIndex = \'1\'
       processName = \'Deploy Application\'
 
@@ -91,7 +91,7 @@ project 'GHA', {
           \'hostName\': HostName,
         ]
         deployerTaskName = \'Deploy to dev\'
-        environmentName = \'insurance-dev\'
+        environmentName = \'demo-dev\'
         processName = \'Deploy Application\'
         rolloutNotificationEnabled = \'0\'
         stageName = \'Development\'
@@ -104,7 +104,7 @@ project 'GHA', {
           \'hostName\': HostName,
         ]
         deployerTaskName = \' Deploy to production\'
-        environmentName = \'insurance-prod\'
+        environmentName = \'demo-prod\'
         processName = \'Deploy Application\'
         rolloutNotificationEnabled = \'0\'
         stageName = \'Production\'
@@ -138,7 +138,7 @@ project 'GHA', {
         type = 'entry'
       }
 
-      formalParameter 'imageRepository', defaultValue: 'ldonleycb/insurance-action', {
+      formalParameter 'imageRepository', defaultValue: 'ldonleycb/demo-app', {
         label = 'Image Repository'
         orderIndex = '3'
         required = '1'
