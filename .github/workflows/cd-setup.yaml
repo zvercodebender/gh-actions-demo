@@ -11,10 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup project
+      - name: Setup project + credentials
         uses: cloudbees/cdro-actions/eval-dsl@main
         with:
           dsl-file: ./platform_content/project.groovy
+          dsl-args: |
+            githubPAT: ${{ secrets.GH_PAT }}
 
       - name: Setup applications + environments
         uses: cloudbees/cdro-actions/eval-dsl@main

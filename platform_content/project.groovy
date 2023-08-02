@@ -11,6 +11,7 @@ project 'GHA', {
 
     addCredential 'token_credential', {
       passwordRecoveryAllowed = '1'
+      password = args.githubPAT
     }
   }
 
