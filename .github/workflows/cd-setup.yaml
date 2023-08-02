@@ -21,7 +21,7 @@ jobs:
         with:
           dsl-file: ./platform_content/application.groovy
           dsl-args: |
-            repoUrl: ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}
+            repoUrl: ${{ github.server_url }}/${{ github.repository }}
 
       - name: Setup service catalog
         uses: cloudbees/cdro-actions/eval-dsl@main
