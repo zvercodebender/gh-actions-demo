@@ -11,8 +11,8 @@ project 'GHA', {
       pluginKey = 'EC-Helm'
     }
 
-    utilityResource 'k8s-agent', {
-      resourceName = 'k8s-agent'
+    utilityResource 'local', {
+      resourceName = 'local'
     }
 
     // Custom properties
@@ -31,8 +31,8 @@ project 'GHA', {
       pluginKey = 'EC-Helm'
     }
 
-    utilityResource 'k8s-agent', {
-      resourceName = 'k8s-agent'
+    utilityResource 'local', {
+      resourceName = 'local'
     }
 
     // Custom properties
