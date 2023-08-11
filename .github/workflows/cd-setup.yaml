@@ -12,14 +12,14 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup project + credentials
-        uses: cloudbees-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@v1
         with:
           dsl-file: ./platform_content/project.groovy
           dsl-args: |
             githubPAT: ${{ secrets.GH_PAT }}
 
       - name: Setup applications + environments
-        uses: cloudbees-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@v1
         with:
           dsl-file: ./platform_content/application.groovy
           dsl-args: |
@@ -27,7 +27,7 @@ jobs:
             dockerHubUser: ${{ secrets.DOCKERHUB_USER }}
 
       - name: Setup service catalog
-        uses: cloudbees-actions/eval-dsl@main
+        uses: cloudbees-actions/eval-dsl@v1
         with:
           dsl-file: ./platform_content/catalog.groovy
           dsl-args: |
