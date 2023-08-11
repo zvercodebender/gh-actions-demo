@@ -53,7 +53,7 @@ jobs:
         env:
           CDRO_URL: ${{ secrets.CDRO_SERVER }}
           CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
-        uses: cloudbees-actions/run-process@main
+        uses: cloudbees-actions/run-process@v1
         with:
           projectName: GHA
           applicationName: Simple Insurance
@@ -67,7 +67,7 @@ jobs:
         env:
           CDRO_URL: ${{ secrets.CDRO_SERVER }}
           CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
-        uses: cloudbees-actions/create-release-from-template@main
+        uses: cloudbees-actions/create-release-from-template@v1
         with:
           templateProjectName: GHA
           templateCatalogName: GHA
@@ -82,7 +82,7 @@ jobs:
         env:
           CDRO_URL: ${{ secrets.CDRO_SERVER }}
           CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
-        uses: cloudbees-actions/start-release@main
+        uses: cloudbees-actions/start-release@v1
         with:
           projectName: GHA
           releaseName: Simple Release ${{ github.sha }}
