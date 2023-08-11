@@ -17,7 +17,7 @@ project 'GHA', {
 
   pluginConfiguration 'helm', {
     field = [
-      'checkConnectionResource': 'k8s-agent',
+      'checkConnectionResource': 'local',
       'createKubeconfig': '0',
       'debugLevel': '0',
       'helmPath': '/usr/local/bin/helm',
