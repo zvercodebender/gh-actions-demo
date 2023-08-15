@@ -56,9 +56,9 @@ jobs:
         uses: cloudbees-actions/run-process@v1
         with:
           projectName: GHA
-          applicationName: Simple Insurance
+          applicationName: Demo App
           processName: Deploy Application
-          environmentName: insurance-dev
+          environmentName: demo-dev
           actualParameter: |
             imageTag: ${{ github.sha }}
 
