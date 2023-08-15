@@ -61,6 +61,7 @@ jobs:
           environmentName: demo-dev
           actualParameter: |
             imageTag: ${{ github.sha }}
+            imageRepository: ${{ secrets.DOCKERHUB_USER }}/${{ env.APP_NAME }}
 
       - name: Create release from template
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
