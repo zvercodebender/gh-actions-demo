@@ -20,7 +20,7 @@ project 'GHA', {
       'checkConnectionResource': 'local',
       'createKubeconfig': '0',
       'debugLevel': '0',
-      'helmPath': 'helm',
+      'helmPath': '/opt/cbflow/third-party/bin/helm',
       'helmVersion': '3',
     ]
     pluginKey = 'EC-Helm'
