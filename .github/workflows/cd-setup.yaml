@@ -6,7 +6,7 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     env:
-      CDRO_URL: ${{ secrets.URL }}
+      CDRO_URL: ${{ secrets.CDRO_URL }}
       CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
     steps:
       - uses: actions/checkout@v2
