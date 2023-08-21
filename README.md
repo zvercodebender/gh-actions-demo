@@ -44,7 +44,7 @@ At this point CloudBees CD/RO should have deployed the application to the `demo-
 6. Using the left hand navigation menu, select Analytics > Dashboards > Application Deployments to view the deployment report
 
 If a change is made and pushed to the repository, the application image will be rebuilt by the workflow and a CloudBees CD/RO Release will be initiated to manage the staged release to `demo-prod`.
-1. Edit the README.md file by adding a blank line, for example, and commit to `main`. This should start the “Build and Deploy” workflow again, but this time it will create a release model and start it with the new application image.
+1. Edit the [README.md](README.md) file by adding a blank line, for example, and commit to `main`. This should start the “Build and Deploy” workflow again, but this time it will create a release model and start it with the new application image.
 2. Using the left hand navigation menu, select Release Orchestration > Releases
 3. There you should see a Release model called "Simple Release <SHA>", select the link to view the model
 4. Select the Pipeline runs tab to view the Release Pipeline run
@@ -53,5 +53,4 @@ If a change is made and pushed to the repository, the application image will be 
 7. Go ahead to approve the manual task.
 8. Select the Path to product to view the status of the release artifacts
 9. Once the `demo-prod` deployment has completed, examine the Environment Inventory once again
-10. You can navigate to the `demo-prod` deployment through the Release Pipeline run Production stage deployment task; there you can view the newly deployed application in `demo-prod`
-11. 
+10. You can navigate to the `demo-prod` deployment through the Release Pipeline run Production stage deployment task; there you can view the newly deployed application in `demo-prod`.
