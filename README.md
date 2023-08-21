@@ -48,7 +48,10 @@ If a change is made and pushed to the repository, the application image will be 
 2. Using the left hand navigation menu, select Release Orchestration > Releases
 3. There you should see a Release model called "Simple Release <SHA>", select the link to view the model
 4. Select the Pipeline runs tab to view the Release Pipeline run
-5. Once the first stage has completed, it is ready for approval to promote the application to `demo-prod`. Go ahead to approve the manual task.
-6. Select the Path to product to view the status of the release artifacts
-7. Once the `demo-prod` deployment has completed, examine the Environment Inventory once again
-8. 
+5. Once the first stage has completed, it is ready for approval to promote the application to `demo-prod`
+6. Refresh the application window to see the newly deployed version of the application
+7. Go ahead to approve the manual task.
+8. Select the Path to product to view the status of the release artifacts
+9. Once the `demo-prod` deployment has completed, examine the Environment Inventory once again
+10. You can navigate to the `demo-prod` deployment through the Release Pipeline run Production stage deployment task; there you can view the newly deployed application in `demo-prod`
+11. 
