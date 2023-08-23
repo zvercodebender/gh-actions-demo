@@ -1,5 +1,5 @@
 # CloudBees CD/RO GitHub Actions Demonstration Repository
-This repository illustrates using [CloudBees CD/RO GitHub Actions](https://github.com/cloudbees-actions) in your GitHub Action Workflows to deploy and release applications. This repository includes is the code and Dockerfile needed to build a very simple deployable application. The repository also includes workflows to set up a CloudBees CD/RO instance and perform deployments and releases to the Kubernetes cluster where the CloudBees CD/RO instance is running.
+This repository illustrates using [CloudBees CD/RO GitHub Actions](https://github.com/cloudbees-github-actions) in your GitHub Action Workflows to deploy and release applications. This repository includes is the code and Dockerfile needed to build a very simple deployable application. The repository also includes workflows to set up a CloudBees CD/RO instance and perform deployments and releases to the Kubernetes cluster where the CloudBees CD/RO instance is running.
 ## What you need to run the demo workflows
 - A CloudBees CD/RO instance with the appropriate port (443) reachable by the GitHub runners so that it can accept REST API calls
 - An API token from the CloudBees CD/RO instance (see [Manage access tokens via the UI documentation](https://docs.beescloud.com/docs/cloudbees-cd/latest/intro/sign-in-cd#_manage_access_tokens_via_the_ui))
