@@ -45,3 +45,5 @@ If a change is made and pushed to the repository, the workflow will rebuild the 
 8. Select the Path to product to view the status of the release artifacts
 9. Once the `demo-prod` deployment has been completed, examine the Environment Inventory once again
 10. You can navigate to the `demo-prod` deployment through the Release Pipeline run Production stage deployment task; there, you can view the newly deployed application in `demo-prod`.
+## Security Considerations
+Note that the secrets added to the repository according to the instructions above will be pushed to and used by the CloudBees CD/RO instance to establish authenticated sessions with Docker Hub and GitHub. The secret values are managed as _credentials_ in CloudBees CD/RO. Credentials are encrypted before they are stored in the system. However, users with sufficient access rights on the system can retrieve the credential values.
