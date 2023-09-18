@@ -55,6 +55,7 @@ jobs:
           CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
         uses: cloudbees-github-actions/run-process@v1
         with:
+          ignore-unverified-cert: true
           projectName: GHA
           applicationName: Demo App
           processName: Deploy Application
@@ -70,6 +71,7 @@ jobs:
           CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
         uses: cloudbees-github-actions/create-release-from-template@v1
         with:
+          ignore-unverified-cert: true
           templateProjectName: GHA
           templateCatalogName: GHA
           templateName: Simple Release
@@ -85,5 +87,6 @@ jobs:
           CDRO_TOKEN: ${{ secrets.CDRO_TOKEN }}
         uses: cloudbees-github-actions/start-release@v1
         with:
+          ignore-unverified-cert: true
           projectName: GHA
           releaseName: Simple Release ${{ github.sha }}

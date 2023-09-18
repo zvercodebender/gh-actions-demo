@@ -1,3 +1,5 @@
+property "/server/app_base_hostname", value: args["cdro_url"].split("//")[1]
+
 project 'GHA', {
   environment 'demo-dev', {
     projectName = 'GHA'

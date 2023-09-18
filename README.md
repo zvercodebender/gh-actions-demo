@@ -5,13 +5,7 @@ This repository illustrates the use of [CloudBees CD/RO GitHub Actions](https://
 - An API token from the CloudBees CD/RO instance (see [Manage access tokens via the UI documentation](https://docs.beescloud.com/docs/cloudbees-cd/latest/intro/sign-in-cd#_manage_access_tokens_via_the_ui))
 - A read/write repo+packages GitHub API token (see [Personal Access Tokens](https://github.com/settings/tokens))
 - A Docker hub API token (Log into https://hub.docker.com/ and navigate to account settings > Security and generate a read/write token)
-## Demonstration repository set up
-### CloudBees CD/RO Instance Set up
-Most of the CloudBees CD/RO instance setup is handled through the demonstration repository automation. There is one manual task that is needed, and that is to run a DSL command through the DSL IDE:
-1. Navigate to the DSL IDE in the CloudBees CD/RO UI (left-hand menu > DevOps Essentials > DSL IDE)
-2. Copy the CloudBees CD/RO server FQDN or IP address (what follows `https://` and precedes the following `/`)
-3. Run the following DSL from the DSL IDE, replacing the text `gha.cb-demos.io` with your FQDN or IP address: `property "/server/app_base_hostname", value: "gha.cb-demos.io"`. The green button to the right is used to apply the DSL code in the editor.
-### Demonstration instance set up
+## Demonstration instance set up
 1. Navigate to the demonstration repository, https://github.com/cloudbees-demos/gh-actions-demo
 2. Press the "Use this template" button to create a new repository in an organization you have write access to
 3. Navigate to Settings > Secrets and variables > Actions and add the following repository secrets:
@@ -46,4 +40,5 @@ If a change is made and pushed to the repository, the workflow will rebuild the 
 9. Once the `demo-prod` deployment has been completed, examine the Environment Inventory once again
 10. You can navigate to the `demo-prod` deployment through the Release Pipeline run Production stage deployment task; there, you can view the newly deployed application in `demo-prod`.
 ## Security Considerations
-Note that the secrets added to the repository according to the instructions above will be pushed to and used by the CloudBees CD/RO instance to establish authenticated sessions with Docker Hub and GitHub. The secret values are managed as _credentials_ in CloudBees CD/RO. Credentials are encrypted before they are stored in the system. However, users with sufficient access rights on the system can retrieve the credential values.
+- Secrets added to the repository according to the instructions above will be pushed to and used by the CloudBees CD/RO instance to establish authenticated sessions with Docker Hub and GitHub. The secret values are managed as _credentials_ in CloudBees CD/RO. Credentials are encrypted before they are stored in the system. However, users with sufficient access rights on the system can retrieve the credential values.
+- By default, SSL certificated are ignored to support self-signed certificate CloudBees CD/RO instances. If this is not desired, update the files [cd-setup.yaml](.github/workflows/cd-setup.yaml) and [build-and-deploy.yml](.github/workflows/build-and-deploy.yml), replacing "true" with false in all the `ignore-unverified-cert` fields.
