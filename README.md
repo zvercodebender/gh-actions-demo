@@ -5,6 +5,12 @@ This repository illustrates the use of [CloudBees CD/RO GitHub Actions](https://
 - An API token from the CloudBees CD/RO instance (see [Manage access tokens via the UI documentation](https://docs.beescloud.com/docs/cloudbees-cd/latest/intro/sign-in-cd#_manage_access_tokens_via_the_ui))
 - A read/write repo+packages GitHub API token (see [Personal Access Tokens](https://github.com/settings/tokens))
 - A Docker hub API token (Log into https://hub.docker.com/ and navigate to account settings > Security and generate a read/write token)
+## CloudBees CD/RO Instance Set up
+Most of the CloudBees CD/RO instance setup is handled through the demonstration repository automation. It may be necessary to update a property value so that the deployed application can be easily accessed through a job link.
+1. Open and login to the CloudBees CD/RO user interface from a web browser
+2. From the left hand menu, navigate to Administration > Server Properties
+3. Examine the value set for `app_base_hostname`
+4. If this does not matches your CloudBees CD/RO hostname, edit the property to make it so. The edit command is available from the right hand menu.
 ## Demonstration instance set up
 1. Navigate to the demonstration repository, https://github.com/cloudbees-demos/gh-actions-demo
 2. Press the "Use this template" button to create a new repository in an organization you have write access to
