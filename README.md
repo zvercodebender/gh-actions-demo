@@ -11,6 +11,7 @@ Most of the CloudBees CD/RO instance setup is handled through the demonstration 
 2. From the left hand menu, navigate to Administration > Server Properties
 3. Examine the value set for `app_base_hostname`
 4. If this does not matches your CloudBees CD/RO hostname, edit the property to make it so. The edit command is available from the right hand menu.
+5. Alternatively, you can set this property through the DSL IDE. Navigate to the DSL IDE from the left hand menu under DevOps Essentials, copy the text `property "/server/app_base_hostname", value: "gha.cb-demos.io"` to the editor, replacing `gha.cb-demos.io` with your instance's FQDN hostname, then press the green button to the right to apply the DSL code.
 ## Demonstration instance set up
 1. Navigate to the demonstration repository, https://github.com/cloudbees-demos/gh-actions-demo
 2. Press the "Use this template" button to create a new repository in an organization you have write access to
