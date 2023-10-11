@@ -1,3 +1,5 @@
+def resource_name = 'rancher'
+
 property "/server/app_base_hostname", value: '192.168.177.11.nip.io'
 
 project 'GHA', {
@@ -13,8 +15,8 @@ project 'GHA', {
       pluginKey = 'EC-Helm'
     }
 
-    utilityResource 'rancher', {
-      resourceName = 'rancher'
+    utilityResource resource_name, {
+      resourceName = resource_name
     }
 
     // Custom properties
@@ -33,8 +35,8 @@ project 'GHA', {
       pluginKey = 'EC-Helm'
     }
 
-    utilityResource 'rancher', {
-      resourceName = 'rancher'
+    utilityResource resource_name, {
+      resourceName = resource_name
     }
 
     // Custom properties

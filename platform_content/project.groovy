@@ -1,3 +1,5 @@
+def resource_name = 'rancher'
+
 project 'GHA', {
   pluginConfiguration 'github', {
     field = [
@@ -17,7 +19,7 @@ project 'GHA', {
 
   pluginConfiguration 'helm', {
     field = [
-      'checkConnectionResource': 'local',
+      'checkConnectionResource': resource_name,
       'createKubeconfig': '0',
       'debugLevel': '0',
       'helmPath': '/opt/cbflow/third-party/bin/helm',
