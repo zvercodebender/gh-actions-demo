@@ -1,4 +1,4 @@
-property "/server/app_base_hostname", value: args["cdro_url"].split("//")[1]
+property "/server/app_base_hostname", value: '192.168.177.11.nip.io'
 
 project 'GHA', {
   environment 'demo-dev', {
@@ -13,8 +13,8 @@ project 'GHA', {
       pluginKey = 'EC-Helm'
     }
 
-    utilityResource 'local', {
-      resourceName = 'local'
+    utilityResource 'rancher', {
+      resourceName = 'rancher'
     }
 
     // Custom properties
@@ -33,8 +33,8 @@ project 'GHA', {
       pluginKey = 'EC-Helm'
     }
 
-    utilityResource 'local', {
-      resourceName = 'local'
+    utilityResource 'rancher', {
+      resourceName = 'rancher'
     }
 
     // Custom properties
