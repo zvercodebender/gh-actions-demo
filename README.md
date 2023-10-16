@@ -50,4 +50,4 @@ If a change is made and pushed to the repository, the workflow will rebuild the 
 - Secrets added to the repository according to the instructions above will be pushed to and used by the CloudBees CD/RO instance to establish authenticated sessions with Docker Hub and GitHub. The secret values are managed as _credentials_ in CloudBees CD/RO. Credentials are encrypted before they are stored in the system. However, users with sufficient access rights on the system can retrieve the credential values.
 - By default, SSL certificated are ignored to support self-signed certificate CloudBees CD/RO instances. If this is not desired, update the files [cd-setup.yaml](.github/workflows/cd-setup.yaml) and [build-and-deploy.yml](.github/workflows/build-and-deploy.yml), replacing "true" with false in all the `ignore-unverified-cert` fields.
 
-Demo
+Demo 2
