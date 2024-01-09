@@ -1,6 +1,6 @@
 def resource_name = 'rancher'
 
-property "/server/app_base_hostname", value: '192.168.177.11.nip.io'
+property "/server/app_base_hostname", value: '192.168.17.11.nip.io'
 
 project 'GHA', {
   environment 'demo-dev', {
